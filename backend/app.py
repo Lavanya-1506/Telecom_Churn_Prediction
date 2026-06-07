@@ -3,7 +3,7 @@ from flask_cors import CORS
 import pandas as pd
 import numpy as np
 import joblib
-from notebooks.preprocess import DataPreprocessor
+from preprocess import DataPreprocessor
 from model_training import ModelTrainer
 import json
 
