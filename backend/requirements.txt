@@ -13,3 +13,5 @@ jupyter
 missingno
 
 imbalanced-learn
+Flask
+flask-cors
