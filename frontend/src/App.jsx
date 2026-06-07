@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Dashboard from './components/Dashboard';
 import PredictionForm from './components/PredictionForm';
@@ -8,8 +8,7 @@ import { BarChart3, Users, Brain, Home } from 'lucide-react';
 
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100">
         {/* Navigation Bar */}
         <nav className="bg-white shadow-lg border-b border-indigo-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,7 +75,7 @@ function App() {
 
         <Toaster position="top-right" />
       </div>
-    </Router>
+    
   );
 }
 
