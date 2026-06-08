@@ -283,14 +283,20 @@ TELECOM_CHURN_PREDICTION/
 ---
 
 ⚙️ Installation & Setup
+
 🚀 How to Run the Project
-1️⃣ Clone Repository
+
+* Clone Repository
+  
 https://github.com/Lavanya-1506/Telecom_Churn_Prediction.git
-2️⃣ Install Dependencies
+* Install Dependencies
+  
 pip install -r requirements.txt
-3️⃣ Run Frontend
+* Run Frontend
+  
 npm run dev
-4️⃣ Run Application
+* Run Application
+  
 python app.py
 
 ---
