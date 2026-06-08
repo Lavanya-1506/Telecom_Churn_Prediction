@@ -68,37 +68,65 @@ The application provides data-driven insights through interactive visualizations
 # 🔄 Project Workflow
 
 ```text
-Student Data
-      │
-      ▼
-Data Preprocessing
-      │
-      ▼
-Exploratory Data Analysis (EDA)
-      │
-      ▼
-Feature Engineering & Scaling
-      │
-      ▼
-Model Training & Evaluation
-      │
-      ▼
-Best Model Selection
-      │
-      ▼
-Model Deployment (Flask API)
-      │
-      ▼
-User Input
-      │
-      ▼
-Performance Prediction
-      │
-      ▼
-Grade Prediction & Recommendations
-      │
-      ▼
-Results Dashboard
+Telecom Customer Churn Dataset
+                │
+                ▼
+      Data Understanding
+                │
+                ▼
+        Data Cleaning
+ (Missing Values, Duplicates,
+ Data Type Conversion)
+                │
+                ▼
+  Exploratory Data Analysis
+     (EDA & Visualizations)
+                │
+                ▼
+      Feature Engineering
+ (Service Count, Loyalty Score,
+ Average Spending, etc.)
+                │
+                ▼
+        Data Encoding &
+         Feature Scaling
+                │
+                ▼
+      Train-Test Splitting
+                │
+                ▼
+        Model Training
+(Logistic Regression, Decision Tree,
+ Random Forest, XGBoost)
+                │
+                ▼
+       Model Evaluation
+(Accuracy, Precision, Recall,
+ F1-Score, ROC-AUC)
+                │
+                ▼
+    Feature Importance Analysis
+                │
+                ▼
+      SHAP Explainability
+                │
+                ▼
+        Best Model Selection
+                │
+                ▼
+          Model Saving
+                │
+                ▼
+          Flask API
+                │
+                ▼
+         React Frontend
+                │
+                ▼
+     Customer Churn Prediction
+                │
+                ▼
+      Dashboard & Insights
 ```
 
 ---
@@ -106,31 +134,55 @@ Results Dashboard
 # 🏗️ System Architecture
 
 ```text
-User Input
-     │
-     ▼
-Frontend Interface
-     │
-     ▼
-Flask Backend API
-     │
-     ▼
-Data Validation & Processing
-     │
-     ▼
-Machine Learning Model
-     │
-     ▼
-Performance Prediction
-     │
-     ▼
-Grade Prediction
-     │
-     ▼
-Recommendation Engine
-     │
-     ▼
-Results Dashboard
++--------------------+
+|   Telecom Dataset  |
++--------------------+
+           |
+           v
++--------------------+
+| Data Preprocessing |
++--------------------+
+           |
+           v
++--------------------+
+|        EDA         |
++--------------------+
+           |
+           v
++--------------------+
+| Feature Engineering|
++--------------------+
+           |
+           v
++--------------------+
+| Model Training     |
+| LR, DT, RF, XGB    |
++--------------------+
+           |
+           v
++--------------------+
+| Model Evaluation   |
++--------------------+
+           |
+           v
++--------------------+
+| Best Model Saving  |
++--------------------+
+           |
+           v
++--------------------+
+| Flask REST API     |
++--------------------+
+           |
+           v
++--------------------+
+| React Frontend     |
++--------------------+
+           |
+           v
++--------------------+
+| Prediction Results |
++--------------------+
 ```
 
 ---
@@ -139,111 +191,121 @@ Results Dashboard
 
 The following algorithms were implemented and evaluated:
 
-* Linear Regression
-* Decision Tree Regressor
-* Random Forest Regressor
+* Logistic Regression
+* Decision Tree Regression
+* Random Forest Regression
 * XGBoost Regressor
 
 The best-performing model was selected based on evaluation metrics.
 
 ---
 
-# 📊 Model Evaluation Metrics
-
-The model performance was evaluated using:
-
-* R² Score
-* Mean Absolute Error (MAE)
-* Mean Squared Error (MSE)
-* Root Mean Squared Error (RMSE)
-
----
-
 # 🛠️ Technology Stack
 
-| Category         | Technologies            |
-| ---------------- | ----------------------- |
-| Frontend         | HTML5, CSS3, JavaScript |
-| Styling          | Bootstrap 5             |
-| Visualization    | Chart.js                |
-| Backend          | Flask (Python)          |
-| Machine Learning | Scikit-learn            |
-| Boosting         | XGBoost                 |
-| Data Processing  | Pandas, NumPy           |
-| Model Storage    | Joblib                  |
+* Frontend      : React.js, Vite, Axios
+* Backend       : Flask, Flask-CORS
+* Machine Learning : Scikit-Learn, XGBoost, Imbalanced-Learn
+* Data Analysis : Pandas, NumPy
+* Visualization : Matplotlib, Seaborn, Plotly, Missingno
+* Model Storage : Joblib
+* Development   : Jupyter Notebook, VS Code
+* Version Control : Git, GitHub
+* Dataset       : IBM Telco Customer Churn Dataset
 
 ---
 
 # 📁 Project Structure
 
 ```text
-AI-Student-Performance-Tracker/
-│
-├── dataset/
-│   └── student_data.csv
-│
-├── models/
-│   └── trained_model.pkl
-│
-├── notebooks/
-│   └── analysis.ipynb
+TELECOM_CHURN_PREDICTION/
 │
 ├── backend/
-│   └── app.py
+│   │
+│   ├── __pycache__/
+│   │
+│   ├── models/
+│   │   ├── best_model.pkl
+│   │   ├── best_model.pkl.bak
+│   │   ├── scaler.pkl
+│   │   └── scaler.pkl.bak
+│   │
+│   ├── notebooks/
+│   │   ├── business_insights.ipynb
+│   │   ├── data_cleaning.ipynb
+│   │   ├── data_understanding.ipynb
+│   │   ├── eda.ipynb
+│   │   ├── feature_engineering.ipynb
+│   │   ├── feature_importance.ipynb
+│   │   ├── model_training.ipynb
+│   │   └── shap_analysis.ipynb
+│   │
+│   ├── reports/
+│   │   └── business_summary.csv
+│   │
+│   ├── app.py
+│   └── requirements.txt
+│
+├── data/
+│   │
+│   ├── processed/
+│   │   ├── cleaned_telco.csv
+│   │   └── engineered_telco.csv
+│   │
+│   └── raw/
+│       └── telco_churn.csv
 │
 ├── frontend/
+│   │
+│   ├── node_modules/
+│   │
+│   ├── public/
+│   │
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   │
+│   ├── .gitignore
+│   ├── eslint.config.js
 │   ├── index.html
-│   ├── style.css
-│   └── script.js
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── README.md
+│   └── vite.config.js
 │
-├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
 ---
 
-# 🚀 Future Enhancements
-
-* Student Login & Authentication
-* Teacher Dashboard
-* PDF Report Generation
-* Email Notifications
-* Subject-wise Performance Analysis
-* Attendance Management System
-* AI-Based Study Recommendations
-* Cloud Deployment
+⚙️ Installation & Setup
+🚀 How to Run the Project
+1️⃣ Clone Repository
+https://github.com/Lavanya-1506/Telecom_Churn_Prediction.git
+2️⃣ Install Dependencies
+pip install -r requirements.txt
+3️⃣ Run Frontend
+npm run dev
+4️⃣ Run Application
+python app.py
 
 ---
 
-⚙️ Installation & Setup
-1. Clone the Repository
-git clone https://github.com/yourusername/StudentPerformanceAnalyzer.git
-cd StudentPerformanceAnalyzer
-2. Install Dependencies
-pip install -r requirements.txt
-3. Generate Dataset (First Time Only)
-python data/generate_dataset.py
-4. Train the Model
-python notebooks/model_training.py
-5. Run the Application
-python backend/app.py
-6. Open the Application
-
-Open your browser and navigate to:
-
-http://localhost:5000
-
 # 🎯 Project Outcomes
 
-Upon successful implementation of the AI Student Performance Tracker, the following outcomes were achieved:
-
-* Developed a machine learning model capable of predicting student performance scores.
-* Identified key factors influencing academic performance, such as attendance, study hours, and assignment completion.
-* Generated personalized recommendations to help students improve their academic outcomes.
-* Visualized student performance trends through interactive charts and analytics.
-* Compared multiple machine learning algorithms and selected the best-performing model.
-* Automated the process of performance analysis and prediction.
-* Created a scalable system that can be integrated into educational institutions for student monitoring and academic planning.
+* Developed an end-to-end Machine Learning system for predicting telecom customer churn.
+* Performed comprehensive data cleaning, preprocessing, and feature engineering on telecom customer data.
+* Conducted Exploratory Data Analysis (EDA) to identify customer behavior patterns and churn trends.
+* Trained and compared multiple Machine Learning models, including Logistic Regression, Decision Tree, Random Forest, and XGBoost.
+* Evaluated model performance using Accuracy, Precision, Recall, F1-Score, ROC-AUC Score, and Confusion Matrix.
+* Identified key factors influencing customer churn through feature importance analysis.
+* Built a predictive model capable of classifying customers as likely to churn or remain with the company.
+* Developed a Flask-based REST API for model integration and prediction services.
+* Created an interactive React dashboard for visualizing churn insights and prediction results.
 
 ---
 
