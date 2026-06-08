@@ -151,6 +151,19 @@ function PredictionForm() {
             </div>
 
             <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Total Charges ($)</label>
+              <input
+                type="number"
+                name="TotalCharges"
+                value={formData.TotalCharges}
+                onChange={handleChange}
+                step="0.01"
+                min="0"
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+
+            <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Contract Type</label>
               <select
                 name="Contract"

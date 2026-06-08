@@ -33,7 +33,11 @@ def load_model_assets():
 
     raw_df = pd.read_csv(RAW_DATA_PATH)
     RAW_DATA_DF = raw_df.copy()
-    reference_df = raw_df.drop(columns=["Churn"]) if "Churn" in raw_df.columns else raw_df.copy()
+    reference_df = raw_df.drop(columns=["customerID", "Churn"]) if "Churn" in raw_df.columns else raw_df.drop(columns=["customerID"], errors="ignore").copy()
+
+    reference_df["TotalCharges"] = pd.to_numeric(reference_df["TotalCharges"], errors="coerce").fillna(0.0)
+    reference_df["tenure"] = pd.to_numeric(reference_df["tenure"], errors="coerce").fillna(0).astype(int)
+    reference_df["MonthlyCharges"] = pd.to_numeric(reference_df["MonthlyCharges"], errors="coerce").fillna(0.0)
 
     REFERENCE_DF = reference_df
     MODEL_FEATURES = pd.get_dummies(REFERENCE_DF, drop_first=True).columns.tolist()
@@ -90,9 +94,6 @@ def build_input_vector(payload: dict) -> pd.DataFrame:
     missing_columns = [col for col in expected_columns if col not in input_df.columns]
     if missing_columns:
         raise ValueError(f"Missing required fields: {', '.join(missing_columns)}")
-
-    # Use an anonymous ID for customerID so model input shape matches training features
-    input_df["customerID"] = "unknown"
 
     # Coerce SeniorCitizen into 0/1 regardless of how the frontend sends it
     input_df["SeniorCitizen"] = input_df["SeniorCitizen"].apply(_parse_senior)
