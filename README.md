@@ -13,7 +13,7 @@
 ---
 
 # 📖 Project Overview
-#Telecom Customer Churn Prediction System
+# Telecom Customer Churn Prediction System
 
 The Telecom Customer Churn Prediction System is a Machine Learning-based web application designed to identify customers who are likely to discontinue telecom services. Customer churn is one of the most significant challenges faced by telecom companies, as acquiring new customers is often more expensive than retaining existing ones.
 
@@ -52,35 +52,16 @@ The application provides data-driven insights through interactive visualizations
 # ✨ Key Features
 
 * Customer Churn Prediction using Machine Learning
-Data Cleaning and Preprocessing Pipeline
-Exploratory Data Analysis (EDA) with Visualizations
-Feature Engineering for Improved Model Performance
-Multiple Model Training and Comparison
-Model Evaluation using Accuracy, Precision, Recall, F1-Score, and ROC-AUC
-Feature Importance Analysis to Identify Churn Factors
-Interactive Dashboard for Business Insights
-Real-Time Churn Prediction Interface
-Flask REST API Integration
-React-Based User Interface
-SHAP-Based Model Explainability
-Customer Risk Level Classification (Low, Medium, High)
-Business Insights and Retention Recommendations
-End-to-End Machine Learning Workflow Implementation
-
----
-
-# 📋 Factors Considered
-
-The prediction model considers the following parameters:
-
-* Study Hours per Day
-* Attendance Percentage
-* Previous Academic Marks
-* Assignment Completion Rate
-* Sleep Hours
-* Participation in Activities
-* Internet Usage
-* Parent Education Level
+* Exploratory Data Analysis (EDA) with Visualizations
+* Feature Engineering for Improved Model Performance
+* Multiple Model Training and Comparison
+* Model Evaluation using Accuracy, Precision, Recall, F1-Score, and ROC-AUC
+* Feature Importance Analysis to Identify Churn Factors
+* Interactive Dashboard for Business Insights
+* Real-Time Churn Prediction Interface
+* Flask REST API Integration
+* React-Based User Interface
+* Customer Risk Level Classification (Low, Medium, High)
 
 ---
 
