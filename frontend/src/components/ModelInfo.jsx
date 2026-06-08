@@ -17,7 +17,7 @@ import {
 } from 'recharts';
 import { Brain, Target, TrendingUp, Award } from 'lucide-react';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = '/api';
 
 function ModelInfo() {
   const [modelInfo, setModelInfo] = useState(null);

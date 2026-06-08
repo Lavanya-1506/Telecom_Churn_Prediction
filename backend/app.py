@@ -19,7 +19,7 @@ REFERENCE_DF = None
 RAW_DATA_DF = None
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 def load_model_assets():
@@ -33,9 +33,11 @@ def load_model_assets():
 
     raw_df = pd.read_csv(RAW_DATA_PATH)
     RAW_DATA_DF = raw_df.copy()
-    reference_df = raw_df.drop(columns=["customerID", "Churn"]) if "Churn" in raw_df.columns else raw_df.drop(columns=["customerID"], errors="ignore").copy()
+    reference_df = raw_df.drop(columns=["Churn"]).copy() if "Churn" in raw_df.columns else raw_df.copy()
 
-    reference_df["TotalCharges"] = pd.to_numeric(reference_df["TotalCharges"], errors="coerce").fillna(0.0)
+    # Keep the raw TotalCharges values as strings to match the training pipeline,
+    # which encoded TotalCharges as categorical dummies.
+    reference_df["TotalCharges"] = reference_df["TotalCharges"].astype(str).fillna(" ")
     reference_df["tenure"] = pd.to_numeric(reference_df["tenure"], errors="coerce").fillna(0).astype(int)
     reference_df["MonthlyCharges"] = pd.to_numeric(reference_df["MonthlyCharges"], errors="coerce").fillna(0.0)
 
@@ -175,16 +177,16 @@ def model_info():
     # Feature importance from model coefficients (top 10)
     feature_importance = []
     coefs = getattr(MODEL, "coef_", None)
-    # Prefer the MODEL_FEATURES computed when loading assets; fallback to model attribute
     mf = MODEL_FEATURES if MODEL_FEATURES is not None else getattr(MODEL, "feature_names_in_", None)
-    if coefs is not None and mf is not None:
+    if coefs is not None:
         coef = coefs[0]
-        # If lengths mismatch, align using the shorter length
-        if len(coef) != len(mf):
-            mf_aligned = list(mf)[: len(coef)]
+        if mf is not None and len(coef) == len(mf):
+            index = list(mf)
         else:
-            mf_aligned = list(mf)
-        abscoef = pd.Series(coef, index=mf_aligned).abs()
+            # Fallback to generic feature names when the model coefficient length doesn't match expected features
+            index = [f"feature_{i}" for i in range(len(coef))]
+
+        abscoef = pd.Series(coef, index=index).abs()
         top = abscoef.sort_values(ascending=False).head(10)
         feature_importance = [{"feature": f, "importance": float(abscoef.loc[f])} for f in top.index]
 
