@@ -1,4 +1,4 @@
-# 🎓 AI Student Performance Tracker
+# 🎓 Telecom Churn Prediction
 
 ## 📌 Internship Details
 
